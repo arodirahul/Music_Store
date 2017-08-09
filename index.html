@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+		<link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css">
+		<title> Music E-Store </title>
+	</head>
+
+	<body bgcolor="#8BC34A">
+
+	<center>
+	<br>
+	<font size="+5" color=000000>Rahul's Music E-Store</font> <br>
+	<div class="nav-collapse collapse pull-right">
+		Logged in as: {{user}}
+		<a href="{{ url|safe }}" class="btn">{{ url_linktext }}</a>
+		<a href="/addtocart" class="btn">My Cart</a>
+	</div>
+	<br><br>
+	</center>
+	<hr>
+	<br>
+	<div>
+		<div class="span12">
+			<ul>
+				<li> <a href=display?genre_name=Hip-Hop> Browse Hip-Hop Titles </a>
+				<li> <a href=display?genre_name=Jazz> Browse Jazz Titles </a>
+				<li> <a href=display?genre_name=Classical> Browse Classical Titles </a>
+			</ul>
+			<ul>
+				<li> <a href=search> Search for Songs by Artist </a>
+			</ul>
+	
+			<ul>
+				<li> <a href=enter> Enter New Song </a>
+			</ul>
+		</div>
+	</div>
+	</body>
+</html>

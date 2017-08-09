@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  </head>  
+  <body>
+  <center>
+      <br>
+      <font size="+2" color="000000"> 
+      	Purchase history of {{user}}
+      </font>
+      <br><br>
+    </center>
+    <hr>	
+	<div>
+	{% for song in purchase_history %}
+		<div class="row">        
+			<blockquote>
+				Bought <b>{{ song.quantity }}</b> <i>"{{ song.title }}"</i> by {{ song.artist_name }}, <b>{{ song.album_name }}</b>, each for $ <b>{{ song.price }} on {{ song.date }}</b>  
+			</blockquote>		
+		</div>
+	{% endfor %}
+</div>	
+	
+  <br><br>
+  
+  <center>
+    <a href=.> Return to main page </a>
+  </center>
+  </body>
+</html>

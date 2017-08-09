@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://etunes-db.appspot.com/display?genre_name=Hip-hop -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css">
+  </head>  
+  <body>
+    <center>
+      <br>
+      <font size="+2" color="0000CC"> Current Titles in {{ genre_name }} </font>
+      <br>
+    </center>
+	<div class="nav-collapse collapse pull-right">	
+	<a href="/addtocart" class="btn">My Cart</a>
+    </div>
+	<br>
+    <hr>
+    <div class="container">
+      <!-- [START greetings] -->
+	  
+       {% for song in songs %}
+	   <form action="/addtocart" method="post">
+		<div class="row">        
+			<blockquote>
+				<i>"{{ song.title }}"</i> by {{ song.artist_name }}, <b>{{ song.album_name }}</b>, for $ <b>{{ song.price }}</b>
+				<div align="right"><button class="btn" type="submit"  name="song" value="{{song.title}}&&{{ song.artist_name }}&&{{ song.album_name }}&&{{ song.price }}" >Add to cart</button></div>
+				<hr>
+			</blockquote>		
+		</div>
+		</form>
+       {% endfor %}
+	  
+	  </div>
+     
+    
+  <br><br>
+  <center>
+    <a href=.> Return to main page </a>
+  </center>
+  
+
+</body></html>

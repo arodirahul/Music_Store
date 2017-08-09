@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css">
+	 
+</head>  
+
+<body>
+    <center>
+      <br>
+      <font size="+2" color="0000CC"> Search Page </font>
+	  <div class="nav-collapse collapse pull-right">
+		<a href="/addtocart" class="btn">My Cart</a>
+	</div>
+      <br><br>
+    </center>
+    <hr>
+	<div class="span12">
+		{% set flag = [] %}
+		
+		
+		{% for song in songs %}
+		{% if artist_name!='\0' and artist_name!='' %}
+		{% if artist_name|lower in song.artist_name|lower %}
+			<!--<blockquote><i>{{ song.artist_name}}</i>, <b>{{ song.title}}</b>, {{song.album_name}}, <b>$ {{song.price}}</b>
+		        <button type="submit"  name="song" value="{{song.title}}&&{{ song.artist_name }}&&{{ song.album_name }}&&{{ song.price }}">Add to cart</button>
+			</blockquote>-->
+			<form action="/addtocart" method="post">
+				<div class="row">        
+					<blockquote>
+						<i>"{{ song.title }}"</i> by {{ song.artist_name }}, <b>{{ song.album_name }}</b>, for $ <b>{{ song.price }}</b>
+						<button class="btn" type="submit"  name="song" value="{{song.title}}&&{{ song.artist_name }}&&{{ song.album_name }}&&{{ song.price }}">Add to cart</button>
+					</blockquote>		
+				</div>
+			</form>
+			{% set _= flag.append(1) %}
+		{% endif %}
+		{% endif %}
+		{% endfor %}
+		
+		{% if flag[0] != 1 and artist_name != '\0' and artist_name != '' %}
+			<blockquote>No entries match that artist</blockquote>
+		{% endif %}
+		{% if artist_name == '' %}
+			<blockquote> Error: Empty artist field </blockquote>
+		{% endif %}
+	</div>
+	<br>
+	<div class="span12">
+		<form action="search?genre_name={{genre_name}}" method="post">
+		  <div>
+		<label name="artist_name">Artist's Name:</label>
+		<input type="text" name="artist_name"> </div>
+		  <div><button class="btn" type="submit">Search</button></div>
+		</form>
+	</div>
+
+    <hr>
+
+	<div class="span12">
+		<form>Genre:
+		  <input value="{{ genre_name }}" name="genre_name">
+		  <button class="btn" type="submit">Switch</button>
+		</form>
+		<a href=.> Return to main page </a>
+	</div>
+  <br><br>
+  <center>
+    
+  </center>
+
+  
+
+</body>
+</html>

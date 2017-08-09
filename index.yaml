@@ -1,0 +1,18 @@
+indexes:
+- kind: Song
+  ancestor: yes
+  properties:
+  - name: date
+    direction: desc    
+
+- kind: Cart
+  ancestor: yes
+  properties:
+  - name: date
+    direction: desc
+
+- kind: Song
+  ancestor: yes
+  properties:
+  - name: date
+    direction: desc

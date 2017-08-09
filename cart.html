@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  </head>  
+  <body>
+    <center>
+      <br>
+      <font size="+2" color="000000"> 
+      	{% if user_name == 'false' %}
+      		Songs in Temporary Cart 
+      	{% else %}
+      		Songs in {{user_name}}'s Cart
+      	{% endif %}
+      </font>
+      <br><br>
+    </center>   
+        
+    {% if checkout == 'true' %}
+    	<hr>
+    	<blockquote> Thanks for your purchase! </blockquote>
+    {% endif %}    
+    
+    <hr>	
+	<form action="/cartcheckout" method="post"> 
+    {% for song in cart %}
+		<blockquote>Artist: {{ song.artist_name }}, Title: {{ song.title}}, Album: {{ song.album_name }} for ${{song.price}} Quantity: {{ song.quantity }}&nbsp;&nbsp;<div align="right"><button class="btn" type="submit" name="remove" value="{{ song.title}}&&{{ song.artist_name }}&&{{ song.album_name }}&&{{song.price}}">Remove</button></div><hr></blockquote>
+		<!--<blockquote>{{ artist_name }},  {{ title}},  ${{price}} &nbsp;&nbsp; <button type="submit" name="remove">Remove</button></blockquote>-->
+	{% endfor %}
+		<p> Total: ${{total}} </p>
+		{% if total != 0 %}
+			{% if user_name != 'false' %}
+				<span onClick="alert('Thank you for your purchase:)');"><button class="btn" name="checkout" value="checkout" type="submit">Checkout</button></span>
+			{% endif %}
+			{% if user_name == 'false'  %}
+			<span onClick="alert('Please Login:)');"><button class="btn" name="checkout" value="checkout" type="submit">Checkout</button></span>
+			{% endif %}
+		{% else %}
+			<span onClick="alert('Cart Empty!!');"><button class="btn" name="checkout" value="checkout" type="submit">Cart Empty</button></span>
+		{% endif %}
+	</form>		
+	
+	
+  <br><br>
+  {% if user_name != 'false' %}
+  <div><a href=purchase> Show Purchase history </a></div>
+  {% endif %}
+  <br><br>
+  <center>
+    <a href=.> Return to main page </a>
+  </center>
+  </body>
+</html>
